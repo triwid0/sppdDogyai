@@ -9,3 +9,7 @@ from datetime import datetime
 class MasterTahun(models.Model):
     tahun = models.CharField(max_length=4)
     status = models.BooleanField(max_length=1, default=False)
+
+class MasterLokasi(models.Model):
+    kd_lokasi = models.CharField(max_length=225)
+    urai = models.TextField(max_length=225)
