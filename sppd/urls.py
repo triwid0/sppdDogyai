@@ -25,7 +25,12 @@ urlpatterns = [
     path('master_jabatan/edit/<int:id>', jabatan.edit, name='edit'),
     path('master_jabatan/off/<int:id>', jabatan.Off, name='Off'),
     path('master_jabatan/on/<int:id>', jabatan.On, name='On'),
-
+ 
+    # master_pegawai
+    path('master_pegawai/', pegawai.index, name='pegawai'),
+    path('master_pegawai/tambah/', pegawai.create, name='tambah'),
+    path('master_pegawai/hapus/<int:id>', pegawai.permanentDelete, name='hapus'),  
+    path('master_pegawai/edit/<int:id>', pegawai.edit, name='edit'), 
     # path('', app.task_list, name='task_list'),
     # path('create/', app.task_create, name='task_create'),
     # path('update/<int:pk>/', app.task_update, name='task_update'),
