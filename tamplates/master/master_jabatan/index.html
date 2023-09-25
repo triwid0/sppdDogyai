@@ -10,14 +10,14 @@
 {% block content %}
 <div class="tab-content container-fluid">
     <div class="title mb-5">
-        <h1>Halaman Master Tahun</h1>
+        <h1>Halaman Master Jabatan</h1>
     </div>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tambah">
         Tambah
     </button>
 
-    {% include 'master/master_tahun/form_modal.html' %}
+    {% include 'master/master_jabatan/form_modal.html' %}
 
   <!--begin::Tab panel-->
   <div
@@ -33,20 +33,20 @@
         <thead>
             <tr class="fw-semibold fs-6 text-muted">
                 <th>No</th>
-                <th>Tahun</th>
+                <th>Jabatan</th>
                 <th>Status</th>
                 <th>Aksi</th>
     
             </tr>
         </thead>
         <tbody>
-            {% for data in tahun %}
+            {% for data in jabatan %}
              <!-- Modal -->
-             {% include 'master/master_tahun/modal_edit.html' %}
+             {% include 'master/master_jabatan/modal_edit.html' %}
             <!--begin::Table row-->
             <tr>
               <td>{{forloop.counter}}</td>
-              <td>{{data.tahun}}</td>
+              <td>{{data.jabatan}}</td>
               {% if data.status == 1 %}
                 <td><a href="#" onclick="Off('{{ data.id }}')" class="btn-on rounded">Aktif</a></td>
               {% elif data.status == 0 %} 
@@ -66,7 +66,7 @@
                         </span>
                         <!--end::Svg Icon-->
                     </a>
-                    <!-- <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" name="idedit" onclick="delete_('soft_delete', `{{ data.tahun }}`, '{{ data.id }}')">
+                    <!-- <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" name="idedit" onclick="delete_('soft_delete', `{{ data.jabatan }}`, '{{ data.id }}')">
                         <span class="svg-icon svg-icon-3">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="currentColor" />
@@ -75,7 +75,7 @@
                             </svg>
                         </span>
                     </a> -->
-                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" name="idedit" onclick="delete_('delete', `{{ data.tahun }}`, '{{ data.id }}')">
+                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" name="idedit" onclick="delete_('delete', `{{ data.jabatan }}`, '{{ data.id }}')">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                         <span class="svg-icon svg-icon-3">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +198,7 @@
             
             function Off(id){
                 Swal.fire({
-                    title: `Apakah kamu yakin ingin Non aktifkan tahun?`,
+                    title: `Apakah kamu yakin ingin Non aktifkan jabatan?`,
                     showCancelButton: true,
                     confirmButtonText: 'Ya',
                     cancelButtonText: 'Batal',
@@ -206,7 +206,7 @@
                     }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: `/master_tahun/off/${id}`,
+                            url: `/master_jabatan/off/${id}`,
                             data: {},
                             dataType: "html",
                             timeout: 10000,
