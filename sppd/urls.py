@@ -12,11 +12,21 @@ urlpatterns = [
     path('master_tahun/off/<int:id>', tahun.Off, name='Off'),
     path('master_tahun/on/<int:id>', tahun.On, name='On'),
 
+<<<<<<< HEAD
     #master lokasi
     path('master_lokasi/', lokasi.index, name='lokasi'),
     path('master_lokasi/tambah/', lokasi.create, name='tambah'),
     path('master_lokasi/hapus/<int:id>', lokasi.permanentDelete, name='hapus'),  
     path('master_lokasi/edit/<int:id>', lokasi.edit, name='edit'),  
+=======
+    # master_jabatan
+    path('master_jabatan/', jabatan.index, name='jabatan'),
+    path('master_jabatan/tambah/', jabatan.create, name='tambah'),
+    path('master_jabatan/hapus/<int:id>', jabatan.permanentDelete, name='hapus'),
+    path('master_jabatan/edit/<int:id>', jabatan.edit, name='edit'),
+    path('master_jabatan/off/<int:id>', jabatan.Off, name='Off'),
+    path('master_jabatan/on/<int:id>', jabatan.On, name='On'),
+>>>>>>> dab51d3061e792ba290ebc3ffd7cdec7fd7758b7
     # path('', app.task_list, name='task_list'),
     # path('create/', app.task_create, name='task_create'),
     # path('update/<int:pk>/', app.task_update, name='task_update'),

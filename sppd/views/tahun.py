@@ -139,7 +139,7 @@ def permanentDelete(request, id):
             pass
         doc.delete()
         message = 'success'
-    except Kata.DoesNotExist:
+    except MasterTahun.DoesNotExist:
         message = 'error'
 
     context = {
