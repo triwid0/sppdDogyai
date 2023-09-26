@@ -5,4 +5,6 @@ from .pegawai import *
 from .dashboard import *
 from .dashboard import *
 from .jabatan import *
+from .pengesah import *
+from .login import *
 

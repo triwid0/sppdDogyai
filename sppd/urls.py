@@ -4,7 +4,9 @@ from .views import *
 
 app_name = 'sppd'
 urlpatterns = [
-    path('', dashboard.index, name='index'),
+    path('', login.loginUser, name='login'),
+    path('adduser/', login.addUser, name='adduser'),
+    path('dash/', dashboard.index, name='dash'),
     path('master_tahun/', tahun.index, name='tahun'),
     path('master_tahun/tambah/', tahun.create, name='tambah'),
     path('master_tahun/hapus/<int:id>', tahun.permanentDelete, name='hapus'),
@@ -31,8 +33,14 @@ urlpatterns = [
     path('master_pegawai/tambah/', pegawai.create, name='tambah'),
     path('master_pegawai/hapus/<int:id>', pegawai.permanentDelete, name='hapus'),  
     path('master_pegawai/edit/<int:id>', pegawai.edit, name='edit'), 
-    # path('', app.task_list, name='task_list'),
-    # path('create/', app.task_create, name='task_create'),
-    # path('update/<int:pk>/', app.task_update, name='task_update'),
-    # path('delete/<int:pk>/', app.task_delete, name='task_delete'),
+
+
+    # pengesah
+    path('master_pengesah/', pengesah.index, name='pengesah'),
+    path('master_pengesah/tambah/', pengesah.create, name='tambah'),
+    path('master_pengesah/hapus/<int:id>', pengesah.permanentDelete, name='hapus'),  
+    path('master_pengesah/edit/<int:id>', pengesah.edit, name='edit'),
+    path('master_pengesah/off/<int:id>', pengesah.Off, name='Off'),
+    path('master_pengesah/on/<int:id>', pengesah.On, name='On'),
+
 ]

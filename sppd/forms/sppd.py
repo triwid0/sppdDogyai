@@ -8,6 +8,12 @@ class MasterTahun(forms.ModelForm):
 		model = MasterTahun
 		fields = ('tahun',)
 
+
+class Account(forms.ModelForm):
+	class Meta:
+		model = Account
+		fields = ('nama','email', 'hak_akses', 'is_staff', 'is_active')
+
 class MasterTahun(forms.ModelForm):
 	class Meta:
 		model = MasterLokasi
@@ -18,6 +24,11 @@ class MasterJabatan(forms.ModelForm):
 	class Meta:
 		model = MasterJabatan
 		fields = ('jabatan',)
+
+class MasterPengesah(forms.ModelForm):
+	class Meta:
+		model = MasterPengesah
+		fields = ('no_rek', 'nama_bank', 'status', 'pegawai', 'jabatan')
 
 class MasterPegawai(forms.ModelForm):
 	class Meta:

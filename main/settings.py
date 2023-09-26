@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-b522bfrj9=3rz)m&pw%smpm#4o52)u14(8j^@)#b80vtibn37c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost:8000', '*' ]
 
 # Application definition
 
@@ -78,13 +77,15 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', 
-        'NAME':  'db_sppdd',
+        'NAME':  'db_sppdDogiyai',
         'USER' : 'postgres',
-        'PASSWORD': 'renaldi2507',
+        'PASSWORD': '12345678',
         'HOST' : 'localhost',
         'POST' : 5432,
     }
 }
+
+
 
 
 # Password validation
@@ -117,6 +118,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# AUTH_USER_MODEL = 'sppd.Account'
+
+# UNTUK LOGIN DIGANTI PAKE TABEL ACCOUNT 
+AUTH_USER_MODEL = 'sppd.Account'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

@@ -1,0 +1,245 @@
+{% extends 'layouts/base_layout.html' %}
+
+{% load static %}
+
+{% block css %}
+    
+{% endblock css %}
+
+
+{% block content %}
+<div class="tab-content container-fluid">
+    <div class="title mb-5">
+        <h1> Halaman Pengesah </h1>
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tambah">
+        Tambah
+    </button>
+
+    {% include 'master/master_pengesah/form_modal.html' %}
+
+  <!--begin::Tab panel-->
+  <div
+    id="kt_billing_months"
+    class="card-body p-0 tab-pane fade show active"
+    role="tabpanel"
+    aria-labelledby="kt_billing_months"
+  >
+    <!--begin::Table container-->
+    <div class="table-responsive">
+      <!--begin::Table-->
+      <table id="datatabel" class="table table-row-bordered gy-5">
+        <thead>
+            <tr class="fw-semibold fs-6 text-muted">
+                <th> No </th>
+                <th> Nama Pegawai </th>
+                <th> Jabatan </th>
+                <th> No Rekening </th>
+                <th> Nama Bank </th>
+                <th> Status </th>
+                <th> Aksi </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in pengesah %}
+             <!-- Modal -->
+             {% include 'master/master_pengesah/modal_edit.html' %}
+            <!--begin::Table row-->
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{data.pegawai}}</td>
+              <td>{{data.jabatan}}</td>
+              <td>{{data.no_rek}}</td>
+              <td>{{data.nama_bank}}</td>
+              {% if data.status == 1 %}
+                <td><a href="#" onclick="Off('{{ data.id }}')" class="btn-on rounded">Aktif</a></td>
+              {% elif data.status == 0 %} 
+                <td><a href="on/{{data.id}}" class="btn-off rounded">Tidak Aktif</a></td>
+              {% else %}
+                <td>Tidak ada status</td>
+              {% endif %}
+              <td>
+                <div class="d-flex justify-content-start flex-shrink-0">
+                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"data-bs-toggle="modal" data-bs-target="#modal-default{{data.id}}">
+                        <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                        <span class="svg-icon svg-icon-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="currentColor" />
+                                <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </a>
+                    <!-- <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" name="idedit" onclick="delete_('soft_delete', `{{ data.tahun }}`, '{{ data.id }}')">
+                        <span class="svg-icon svg-icon-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="currentColor" />
+                                <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="currentColor" />
+                                <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="currentColor" />
+                            </svg>
+                        </span>
+                    </a> -->
+                    <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" name="id" onclick="delete_('delete', `{{ data.pegawai }}`, '{{ data.id }}')">
+                        <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                        <span class="svg-icon svg-icon-3">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="currentColor" />
+                                <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="currentColor" />
+                                <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </a>
+                </div>
+              </td>
+            </tr>
+            <!--end::Table row-->
+            {% endfor %}
+             
+        </tbody>
+    </table>
+      <!--end::Table-->
+    </div>
+    <!--end::Table container-->
+  </div>
+  <!--end::Tab panel-->
+</div>
+{% endblock content %}
+
+
+
+{% block scripts %}
+    <!-- <script src="{% static 'admin/js/datatables/datatables.min.js' %}"></script> -->
+    <!-- <script src="{% static 'admin/js/admin/admin-aksi.js' %}"></script> -->
+    <script>
+        $(document).ready( function () {
+            // $('[data-tooltip="tooltip"]').tooltip();
+            $('#datatabel').DataTable();
+            // $('#table-archive').DataTable();
+        });
+        // function restore_(nama, id){
+        //         Swal.fire({
+        //             title: `Apakah anda yakin ingin memulihkan file ${nama}?`,
+        //             showCancelButton: true,
+        //             confirmButtonText: 'Pulihkan',
+        //             cancelButtonText: 'Batal',
+        //             }).then((result) => {
+        //             if (result.isConfirmed) {
+        //                 $.ajax({
+        //                     url: `/manage_panel/kata_mereka/restore/${id}`,
+        //                     data: {},
+        //                     dataType: "html",
+        //                     timeout: 10000,
+        //                     beforeSend: function() {
+        //                         Swal.fire({
+        //                             title: 'Memproses.........',
+        //                             allowEscapeKey: false,
+        //                             allowOutsideClick: false,
+        //                             showCancelButton: false,
+        //                             showConfirmButton: false,
+        //                             onOpen: () => {
+        //                                 swal.showLoading();
+        //                             }
+        //                         });
+        //                     },
+        //                     success: function(response){
+        //                         Swal.fire(`Kata Mereka berhasil dipulihkan!`, '', 'success');
+        //                         setTimeout(function(){
+        //                             window.location.href = "/manage_panel/kata_mereka/";
+        //                         }, 2000); 
+        //                     },
+        //                     error: function (xhr, ajaxOptions, thrownError) {
+        //                         Swal.fire(`Kata Mereka gagal dipulihkan!`, '', 'error');
+        //                     }
+        //                 });
+                        
+        //             }
+        //         });
+        //     }
+            function delete_(action, nama, id){
+                let pesan = action == 'soft_delete' ? "arsipkan" : "hapus";
+                let confirmation = action == 'soft_delete' ? "Arsipkan" : "Hapus";
+                // let url = $(this).attr('href');
+                Swal.fire({
+                    title: `Apakah kamu yakin ingin meng${pesan} file ${nama}?`,
+                    showCancelButton: true,
+                    confirmButtonText: confirmation,
+                    cancelButtonText: 'Batal',
+                    confirmButtonColor: '#d33',
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: `hapus/${id}`,
+                            data: {},
+                            dataType: "html",
+                            timeout: 10000,
+                            beforeSend: function() {
+                                Swal.fire({
+                                    title: 'Memproses.........',
+                                    allowEscapeKey: false,
+                                    allowOutsideClick: false,
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                });
+                                Swal.showLoading();
+                            },
+                            success: function(response){
+                                Swal.fire(`Kata Mereka berhasil di${pesan}!`, '', 'success');
+                                setTimeout(function(){
+                                    window.location.href = "";
+                                }, 2000); 
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                Swal.fire(`Kata Mereka gagal di${pesan}!`, '', 'error');
+                            }
+                        });
+                        
+                    }
+                });
+
+            }
+
+            
+            function Off(id){
+                Swal.fire({
+                    title: `Apakah kamu yakin ingin Non aktifkan tahun?`,
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Batal',
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: `/master_pengesah/off/${id}`,
+                            data: {},
+                            dataType: "html",
+                            timeout: 10000,
+                            beforeSend: function() {
+                                Swal.fire({
+                                    title: 'Memproses.........',
+                                    allowEscapeKey: false,
+                                    allowOutsideClick: false,
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                });
+                                Swal.showLoading();
+                            },
+                            success: function(response){
+                                Swal.fire(`Kata Mereka berhasil diNonaktifkan!`, '', 'success');
+                                setTimeout(function(){
+                                    window.location.href = "";
+                                }, 2000); 
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                Swal.fire(`Kata Mereka gagal diNonaktifkan!`, '', 'error');
+                            }
+                        });
+                        
+                    }
+                });
+
+                
+            } 
+            
+    </script>
+{% endblock scripts %}

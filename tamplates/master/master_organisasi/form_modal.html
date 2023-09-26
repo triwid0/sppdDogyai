@@ -1,0 +1,54 @@
+  <!-- Modal -->
+  <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="tambah/" method="POST" onsubmit="return validation()">
+                {% csrf_token %}
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">NIP</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="nip" id="nip" value="{{data.nip}}"/>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Nama</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="nama" id="nama" value="{{data.nama}}"/>
+                </div><div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Golongan</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="golongan" id="golongan" value="{{data.golongan}}"/>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Eselon</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="eselon" id="eselon" value="{{data.eselon}}"/>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"> Pangkat </span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="pangkat" id="pangkat" value="{{data.pangkat}}"/>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Nomor Hp</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="nohp" id="nohp" value="{{data.no_hp}}"/>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm"> Email </span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="email" id="email "value="{{data.email}}"/>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text">Alamat</span>
+                    <textarea class="form-control" aria-label="With textarea" id="alamat" name="alamat" value="{{data.alamat}}"></textarea>
+                </div>
+                
+                <div class="mb-3">
+                  <p id="error-message"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

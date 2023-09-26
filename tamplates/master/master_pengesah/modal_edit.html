@@ -1,0 +1,50 @@
+<div class="modal fade" id="modal-default{{data.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="edit/{{data.id}}" method="POST">
+                {% csrf_token %}
+                <div>
+                    <input type="hidden" class="form-control" id="id" value="{{data.id}}">
+                  </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Nama Pegawai</span>
+                    <select name="pegawai" id="" value="{{ data.id }}" class="form-control">
+                      <option id="nama" value="">pilih pegawai</option>
+                      {% for data in pegawai %}
+                      <option value="{{ data.id }}">{{ data.nama }}</option>
+                      {% endfor %}
+                    </select>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Nama Jabatan</span>
+                    <select name="jabatan" id="" value="{{ data.id }}" class="form-control">
+                      <option id="jabatan" value="">pilih Jabatan</option>
+                      {% for data in jabatan %}
+                      <option value="{{ data.id }}">{{ data.jabatan }}</option>
+                      {% endfor %}
+                    </select>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">No Rekening</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="no_rek" id="no_rek" value="{{data.no_rek}}"/>
+                </div><div class="input-group input-group-sm mb-5">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Nama Bank</span>
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="nama_bank" id="nama_bank" value="{{data.nama_bank}}"/>
+                </div>
+                <div class="mb-3">
+                  <p id="error-message"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    </div>
+</div>

@@ -5,8 +5,21 @@
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <!--begin::Logo image-->
         <a href="../../demo1/dist/index.html">
-            <img alt="Logo" src="{% static 'media/logos/default-dark.svg' %}" class="h-25px app-sidebar-logo-default" />
-            <img alt="Logo" src="{% static 'media/logos/default-small.svg' %}" class="h-20px app-sidebar-logo-minimize" />
+            <div class="menu-item overflow-hidden app-sidebar-wrapper">
+                <span class="menu-link d-flex">
+                    <div class="logo d-flex " style="margin-bottom: 10px; margin-left: 10px;">
+                        <span class="menu-icon" >
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                            <img alt="Logo" src="{% static 'media/logos/logo.svg' %}" class="h-40px app-sidebar-logo-default" />
+                            <!--end::Svg Icon-->
+                        </span>
+                        <a class="menu-title ms-5" style="margin-top: 10px;" href="{% url 'sppd:dash' %}">
+                                <h2 class="menu-title">Dogiyai</h2>
+                            </a>
+                    </div>
+                </span>
+            </div>
+            <img alt="Logo" style="margin-right: 5px;" src="{% static 'media/logos/logo.svg' %}" class="h-35px app-sidebar-logo-minimize" />
         </a>
         <!--end::Logo image-->
         <!--begin::Sidebar toggle-->
@@ -45,7 +58,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <a class="menu-title" href="{% url 'sppd:index' %}">
+                        <a class="menu-title" href="{% url 'sppd:dash' %}">
                                 <span class="menu-title">Dashboard</span>
                             </a>
                     </span>
@@ -115,7 +128,7 @@
                         </div>
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="">
+                            <a class="menu-link" href="{% url 'sppd:pengesah' %}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
