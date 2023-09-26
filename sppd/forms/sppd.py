@@ -8,7 +8,7 @@ class MasterTahun(forms.ModelForm):
 		model = MasterTahun
 		fields = ('tahun',)
 
-class MasterTahun(forms.ModelForm):
+class MasterLokasi(forms.ModelForm):  
 	class Meta:
 		model = MasterLokasi
 		fields = ('kd_lokasi',)

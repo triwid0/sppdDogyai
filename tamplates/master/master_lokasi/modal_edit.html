@@ -2,7 +2,7 @@
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit Data Lokasi </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -11,14 +11,22 @@
                 <div>
                   <input type="hidden" class="form-control" id="id" value="{{data.id}}">
                 </div>
-                <div class="mb-3">
+                <div class="input-group input-group-sm mb-5">
+                  <span class="input-group-text" id="inputGroup-sizing-sm"> Kode Lokasi </span>
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="kd_lokEdit" id="kd_lokEdit" value="{{data.kd_lokasi}}"/>
+                </div>
+                <div class="input-group input-group-sm mb-5">
+                  <span class="input-group-text" id="inputGroup-sizing-sm"> Urai </span>
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="uraiEdit" id="uraiEdit" value="{{data.urai}}"/>
+                </div>
+               <!--  <div class="mb-3">
                   <label for="kd_lokEdit" class="col-form-label">Kode Lokasi</label>
                   <input type="text" class="form-control" name="kd_lokEdit" id="kd_lokEdit" value="{{data.kd_lokasi}}">
                 </div>
                 <div class="mb-3">
                     <label for="uraiEdit" class="col-form-label">Urai</label>
                     <input type="text" class="form-control" name="uraiEdit" id="uraiEdit" value="{{data.urai}}">
-                  </div>
+                  </div> -->
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
