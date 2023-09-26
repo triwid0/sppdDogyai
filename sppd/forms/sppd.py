@@ -14,7 +14,7 @@ class Account(forms.ModelForm):
 		model = Account
 		fields = ('nama','email', 'hak_akses', 'is_staff', 'is_active')
 
-class MasterTahun(forms.ModelForm):
+class MasterLokasi(forms.ModelForm):  
 	class Meta:
 		model = MasterLokasi
 		fields = ('kd_lokasi',)

@@ -3,13 +3,17 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Tahun</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form action="tambah/" method="POST" onsubmit="return validation()">
                 {% csrf_token %}
-                <div class="form-group">
+                <div class="input-group input-group-sm mb-5">
+                  <span class="input-group-text" id="inputGroup-sizing-sm"> Tahun </span>
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="tahun" id="tahun" value="{{data.tahun}}"/>
+                </div>
+                <!-- <div class="form-group">
                     <label for="judul">Tahun</label>
                     <input type="text" placeholder="Masukkan nama..."
                         class="form-control"
@@ -17,7 +21,7 @@
                         id="tahun" 
                         value="{{data.id}}"
                         required>
-                </div>
+                </div> -->
                 <div class="mb-3">
                   <p id="error-message"></p>
                 </div>
