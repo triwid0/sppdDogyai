@@ -354,7 +354,7 @@
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5">
-											<a href="../../demo1/dist/authentication/layouts/corporate/sign-in.html" class="menu-link px-5">Sign Out</a>
+											<a href="#" onclick="logout()" class="menu-link px-5" >Sign Out</a>
 										</div>
 										<!--end::Menu item-->
 									</div>
@@ -451,6 +451,51 @@
 		<script src="{% static 'js/js_table/table.js' %}"></script>
 		<script src="{% static 'js/utilitis/alert.js' %}"></script>
 		<script src="{% static 'js/validations/validation.js' %}"></script>
+		<script>
+			var csrf_token = "{{csrf_token}}";
+			
+			$(function () {
+				$('[data-toggle="tooltip"]').tooltip()
+			})
+			
+			function logout(){
+				Swal.fire({
+					title: `Apakah anda yakin ingin keluar?`,
+					showCancelButton: true,
+					confirmButtonText: 'Keluar',
+					cancelButtonText: 'Batal',
+					}).then((result) => {
+					if (result.isConfirmed) {
+						$.ajax({
+							url: `{% url 'sppd:logout' %}`,
+							data: {},
+							dataType: "html",
+							timeout: 10000,
+							beforeSend: function() {
+								Swal.fire({
+									title: 'Memproses.........',
+									allowEscapeKey: false,
+									allowOutsideClick: false,
+									showCancelButton: false,
+									showConfirmButton: false,
+								});
+								Swal.showLoading();
+							},
+							success: function(response){
+								Swal.fire(`Berhasil Logout!`, '', 'success');
+								setTimeout(function(){
+									window.location.href = "{% url 'sppd:login' %}";
+								}, 2000); 
+							},
+							error: function (xhr, ajaxOptions, thrownError) {
+								Swal.fire(`Gagal Logout`, '', 'error');
+							}
+						});
+						
+					}
+				});
+			}
+		</script>
 		<!--end::Custom Javascript-->
         {% block scripts %} {% endblock scripts %}
 		<!--end::Javascript-->
