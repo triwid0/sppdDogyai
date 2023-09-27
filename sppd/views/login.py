@@ -11,6 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth import logout
 
 
 
@@ -55,3 +56,7 @@ def addUser(request):
         return redirect('sppd:login')
 
     return render(request, 'auth/addUser.html', contex)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('sppd:login')
