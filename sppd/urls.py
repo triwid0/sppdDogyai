@@ -34,7 +34,6 @@ urlpatterns = [
     path('master_pegawai/hapus/<int:id>', pegawai.permanentDelete, name='hapus'),  
     path('master_pegawai/edit/<int:id>', pegawai.edit, name='edit'), 
 
-
     # pengesah
     path('master_pengesah/', pengesah.index, name='pengesah'),
     path('master_pengesah/tambah/', pengesah.create, name='tambah'),
