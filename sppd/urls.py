@@ -42,5 +42,15 @@ urlpatterns = [
     path('master_pengesah/edit/<int:id>', pengesah.edit, name='edit'),
     path('master_pengesah/off/<int:id>', pengesah.Off, name='Off'),
     path('master_pengesah/on/<int:id>', pengesah.On, name='On'),
+    
+    # master_organisasi
+    path('master_organisasi/', organisasi.index, name='organisasi'),
+    path('master_organisasi/tambah/', organisasi.create, name='tambah'),
+    path('master_organisasi/edit/<int:id>', organisasi.edit, name='edit'),
+    path('master_organisasi/hapus/<int:id>', organisasi.permanentDelete, name='hapus'),
+    # path('master_jabatan/edit/<int:id>', jabatan.edit, name='edit'),
+    # path('master_jabatan/off/<int:id>', jabatan.Off, name='Off'),
+    # path('master_jabatan/on/<int:id>', jabatan.On, name='On'),
+    
 
 ]

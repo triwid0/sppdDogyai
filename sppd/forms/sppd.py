@@ -42,3 +42,9 @@ class MasterPegawai(forms.ModelForm):
 		fields = ('email',)
 		fields = ('alamat',)
 
+class MasterOrganisasi(forms.ModelForm):
+	class Meta:
+		model = MasterOrganisasi
+		fields = ('id_organisasi',)
+		fields = ('kode_organisasi',)
+		fields = ('urai',)
