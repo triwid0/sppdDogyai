@@ -120,4 +120,23 @@ class LogAdmin(models.Model):
 	waktu = models.DateTimeField(auto_now_add=True)
 
 
+class SshLuarDaerah(models.Model):
+	jenis = models.CharField(max_length=225)
+	tipe = models.CharField(max_length=225)
+	satuan = models.CharField(max_length=225)
+	uraian = models.CharField(max_length=225)
+	harga = models.IntegerField(null=True)
+	type_transportasi = models.CharField(max_length=225)
+	keterangan = models.TextField(max_length=225)
+
+class SshDalamDaerah(models.Model):
+	tipe = models.CharField(max_length=225)
+	zona = models.CharField(max_length=225)
+	satuan = models.CharField(max_length=225)
+	uraian = models.CharField(max_length=225)
+	harga = models.IntegerField(null=True)
+	type_transportasi = models.CharField(max_length=225)
+	keterangan = models.TextField(max_length=225)
+
+
         
