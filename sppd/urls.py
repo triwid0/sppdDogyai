@@ -5,6 +5,7 @@ from .views import *
 app_name = 'sppd'
 urlpatterns = [
     path('', login.loginUser, name='login'),
+    path('logout/', login.logoutUser, name='logout'),
     path('adduser/', login.addUser, name='adduser'),
     path('dash/', dashboard.index, name='dash'),
     path('master_tahun/', tahun.index, name='tahun'),
@@ -33,7 +34,6 @@ urlpatterns = [
     path('master_pegawai/tambah/', pegawai.create, name='tambah'),
     path('master_pegawai/hapus/<int:id>', pegawai.permanentDelete, name='hapus'),  
     path('master_pegawai/edit/<int:id>', pegawai.edit, name='edit'), 
-
 
     # pengesah
     path('master_pengesah/', pengesah.index, name='pengesah'),

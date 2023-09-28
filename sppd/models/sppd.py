@@ -24,11 +24,14 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
         extra_fields.setdefault("is_active", True)
+        extra_fields.setdefault('is_verified', True)
 
         if extra_fields.get("is_staff") is not True:
             raise ValueError(_("Superuser must have is_staff=True."))
         if extra_fields.get("is_superuser") is not True:
             raise ValueError(_("Superuser must have is_superuser=True."))
+        if extra_fields.get('is_verified') is not True:
+            raise ValueError(_("Superuser must have is_verified=True."))
         return self.create_user(email, password, **extra_fields)
 
 class Account(AbstractBaseUser, PermissionsMixin):
@@ -39,6 +42,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     hak_akses = models.CharField(max_length=30, default="pegawai")
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_verified = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = "email"
@@ -95,5 +99,44 @@ class MasterPengesah(models.Model):
 
     def __str__(self):
         return f'(Pengesah: {self.pegawai.nama} ({self.jabatan.jabatan})'
+
+class LogVisitor(models.Model):
+	ip = models.CharField(max_length=20, default='-')
+	device_type = models.CharField(max_length=20, default='-')
+	browser_type = models.CharField(max_length=30, default='-')
+	browser_version = models.CharField(max_length=30, default='-')
+	os_type = models.CharField(max_length=30, default='-')
+	os_version = models.CharField(max_length=30, default='-')
+	waktu = models.DateTimeField(auto_now_add=True)
+
+class LogAdmin(models.Model):
+	ip = models.CharField(max_length=20, default='-')
+	device_type = models.CharField(max_length=20, default='-')
+	browser_type = models.CharField(max_length=30, default='-')
+	browser_version = models.CharField(max_length=30, default='-')
+	os_type = models.CharField(max_length=30, default='-')
+	os_version = models.CharField(max_length=30, default='-')
+	aktivitas = models.CharField(max_length=30, default='-')
+	waktu = models.DateTimeField(auto_now_add=True)
+
+
+class SshLuarDaerah(models.Model):
+	jenis = models.CharField(max_length=225)
+	tipe = models.CharField(max_length=225)
+	satuan = models.CharField(max_length=225)
+	uraian = models.CharField(max_length=225)
+	harga = models.IntegerField(null=True)
+	type_transportasi = models.CharField(max_length=225)
+	keterangan = models.TextField(max_length=225)
+
+class SshDalamDaerah(models.Model):
+	tipe = models.CharField(max_length=225)
+	zona = models.CharField(max_length=225)
+	satuan = models.CharField(max_length=225)
+	uraian = models.CharField(max_length=225)
+	harga = models.IntegerField(null=True)
+	type_transportasi = models.CharField(max_length=225)
+	keterangan = models.TextField(max_length=225)
+
 
         
